@@ -13,19 +13,19 @@ public class MainScreen extends javax.swing.JFrame {
     PersonTableModel modelo;
     
     public void LoadTable() {
-        modelo = new PersonTableModel();
+        modelo = new PersonTableModel(PersonController.getPersons());
         tabelaPessoas.setModel(modelo);
         
         tabelaPessoas.getColumnModel().getColumn(0).setPreferredWidth(50);
         tabelaPessoas.getColumnModel().getColumn(1).setPreferredWidth(50);
-        tabelaPessoas.getColumnModel().getColumn(2).setPreferredWidth(70);
-        tabelaPessoas.getColumnModel().getColumn(3).setPreferredWidth(70);
+        // tabelaPessoas.getColumnModel().getColumn(2).setPreferredWidth(70);
+        // tabelaPessoas.getColumnModel().getColumn(3).setPreferredWidth(70);
     }
     
     public void Botoes(boolean N, boolean E, boolean R, boolean S, boolean C) {
         botaoNovo.setEnabled(N);
-        botaoEditar.setEnabled(E);
-        botaoExcluir.setEnabled(R);
+        // botaoEditar.setEnabled(E);
+        // botaoExcluir.setEnabled(R);
         botaoSalvar.setEnabled(S);
         botaoCancelar.setEnabled(C);
     }
@@ -51,7 +51,7 @@ public class MainScreen extends javax.swing.JFrame {
         tabelaPessoas = new javax.swing.JTable();
         botaoNovo = new javax.swing.JButton();
         botaoEditar = new javax.swing.JButton();
-        botaoExcluir = new javax.swing.JButton();
+        botaoConsultar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
@@ -68,14 +68,14 @@ public class MainScreen extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Sobrenome", "Sala", "Espaço"
+                "Nome", "Sobrenome"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -95,8 +95,6 @@ public class MainScreen extends javax.swing.JFrame {
         if (tabelaPessoas.getColumnModel().getColumnCount() > 0) {
             tabelaPessoas.getColumnModel().getColumn(0).setPreferredWidth(50);
             tabelaPessoas.getColumnModel().getColumn(1).setPreferredWidth(50);
-            tabelaPessoas.getColumnModel().getColumn(2).setPreferredWidth(70);
-            tabelaPessoas.getColumnModel().getColumn(3).setPreferredWidth(70);
         }
 
         botaoNovo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -109,19 +107,9 @@ public class MainScreen extends javax.swing.JFrame {
 
         botaoEditar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         botaoEditar.setText("Editar");
-        botaoEditar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botaoEditarMouseClicked(evt);
-            }
-        });
 
-        botaoExcluir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        botaoExcluir.setText("Excluir");
-        botaoExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botaoExcluirMouseClicked(evt);
-            }
-        });
+        botaoConsultar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        botaoConsultar.setText("Consultar");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pessoas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
 
@@ -204,7 +192,7 @@ public class MainScreen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botaoConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -216,7 +204,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoNovo)
                     .addComponent(botaoEditar)
-                    .addComponent(botaoExcluir))
+                    .addComponent(botaoConsultar))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -228,14 +216,6 @@ public class MainScreen extends javax.swing.JFrame {
     private void botaoNovoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoNovoMouseClicked
         Botoes(false,false,false,true,true);
     }//GEN-LAST:event_botaoNovoMouseClicked
-
-    private void botaoEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEditarMouseClicked
-        Botoes(false,false,false,true,true);
-    }//GEN-LAST:event_botaoEditarMouseClicked
-
-    private void botaoExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoExcluirMouseClicked
-        Botoes(true,false,false,false,false);
-    }//GEN-LAST:event_botaoExcluirMouseClicked
 
     private void botaoSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoSalvarMouseClicked
         
@@ -266,7 +246,7 @@ public class MainScreen extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -300,8 +280,8 @@ public class MainScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCancelar;
+    private javax.swing.JButton botaoConsultar;
     private javax.swing.JButton botaoEditar;
-    private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoNovo;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JTextField campoNome;

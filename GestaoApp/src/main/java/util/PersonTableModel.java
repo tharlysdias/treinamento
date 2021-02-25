@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 public class PersonTableModel extends AbstractTableModel {
 
     private List<String[]> linhas;
-    private String[] colunas = new String[]{"Nome", "Sobrenome", "Sala", "Espaço"};
+    private String[] colunas = new String[]{"Nome", "Sobrenome"};
 
     public PersonTableModel() {
         linhas = new ArrayList<String[]>();
@@ -56,8 +56,8 @@ public class PersonTableModel extends AbstractTableModel {
         }
     }
 
-    @Override
     // Modifica na linha e coluna especificada
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         String t[] = linhas.get(rowIndex); // Carrega o item da linha que deve ser modificado
 
@@ -69,7 +69,7 @@ public class PersonTableModel extends AbstractTableModel {
                 t[1] = aValue.toString();
                 break;
             default:
-            // Isto não deveria acontecer...             
+                // Isto não deveria acontecer...             
         }
         fireTableCellUpdated(rowIndex, columnIndex);
     }
