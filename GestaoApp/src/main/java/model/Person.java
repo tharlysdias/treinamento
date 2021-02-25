@@ -15,6 +15,9 @@ public class Person {
     private String name;
     private String lastName;
     
+    private EventRoom room; // A pessoa está dentro de uma sala
+    private CoffeSpace space; // A pessoa está dentro de um espaço de café
+    
     // Criando Construtor
     public Person() {
         
@@ -48,6 +51,23 @@ public class Person {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public EventRoom getRoom() {
+        return room;
+    }
+
+    public void setRoom(EventRoom room) {
+        this.room = room;
+    }
+
+    public CoffeSpace getSpace() {
+        return space;
+    }
+
+    public void setSpace(CoffeSpace space) {
+        this.space = space;
+    }
+    
     
     // Converte Person para JSON (toJson)
     public JSONObject toJson() {
