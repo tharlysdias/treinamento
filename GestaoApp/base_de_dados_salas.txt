@@ -1,0 +1,1 @@
+[{"nome":"Treinamento","lotacao":25},{"nome":"Proway","lotacao":26}]

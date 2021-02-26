@@ -11,6 +11,8 @@ public class CoffeSpace {
     // Atributo do espaço de café
     private String name;
     private int capacity;
+    
+    // O espaço de café tem uma lista de pessoas
     ArrayList<Person> listPersonCoffe;
 
     // Criando construtores

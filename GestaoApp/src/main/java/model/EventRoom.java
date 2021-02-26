@@ -1,6 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import util.FileRoom;
 
 /**
  *
@@ -12,7 +15,7 @@ public class EventRoom {
     private String name;
     private int capacity;
     
-    // O espaço do evento tem uma lista de pessoas
+    // A sala do evento tem uma lista de pessoas
     ArrayList<Person> listPerson;
 
     // Criando construtores
@@ -23,6 +26,12 @@ public class EventRoom {
     public EventRoom(String name, int capacity) {
         this.name = name;
         this.capacity = capacity;
+        listPerson = new ArrayList();
+    }
+    
+    public EventRoom(JSONObject json) {
+        this.name = json.getString("nome");
+        this.capacity = json.getInt("lotacao");
         listPerson = new ArrayList();
     }
     
@@ -44,6 +53,13 @@ public class EventRoom {
         this.capacity = capacity;
     }
     
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("nome", this.name);
+        json.put("lotacao", this.capacity);
+        return json;
+    }
+    
     // Metodo para manipular o ArrayList de pessoas
     // Retorna a lista inteira de pessoas
     public ArrayList<Person> getListPerson() {
@@ -62,4 +78,40 @@ public class EventRoom {
         listPerson.add(P);
     }
     
+    // Insere uma sala na base de dados
+    public boolean PersistirRoom() {
+        JSONObject json = this.toJson();
+        
+        String base = FileRoom.Read();
+        JSONArray jA = new JSONArray();
+        if (!base.isEmpty() && base.length() > 5) {
+            jA = new JSONArray(base);
+        }
+        
+        jA.put(json);
+        
+        FileRoom.Write(jA.toString());
+        
+        return true;
+    }
+    
+    // Retorna um ArrayList (vetor) do tipo sala
+    public static ArrayList<EventRoom> getRooms() {
+        ArrayList<EventRoom> rooms = new ArrayList();
+        
+        // Ler a base de dados
+        String base = FileRoom.Read();
+        JSONArray jA = new JSONArray(base);
+        
+        if (base.isEmpty() || base.length() < 5) {
+            return null;
+        }
+        
+        for (int i = 0; i < jA.length(); i++) {
+            EventRoom R = new EventRoom(jA.getJSONObject(i));
+            rooms.add(R);
+        }
+        
+        return rooms;
+    }
 }
