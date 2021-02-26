@@ -31,6 +31,11 @@ public class EventRoomScreen extends javax.swing.JInternalFrame {
         botaoCancelarSala.setEnabled(C);
     }
     
+    public void LimpaCampo() {
+        campoNomeSala.setText("");
+        campoLotacaoSala.setText("");
+    }
+    
     /**
      * Creates new form EventRoomScreen
      */
@@ -155,7 +160,7 @@ public class EventRoomScreen extends javax.swing.JInternalFrame {
                 .addComponent(botaoNovoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(botaoSalvarSala, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(30, 30, 30)
                 .addComponent(botaoCancelarSala, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
@@ -203,9 +208,8 @@ public class EventRoomScreen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tabelaSalasMouseClicked
 
     private void botaoNovoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoSalaActionPerformed
-        campoNomeSala.setText("");
-        campoLotacaoSala.setText("");
         Botoes(false,true,true);
+        LimpaCampo();
     }//GEN-LAST:event_botaoNovoSalaActionPerformed
 
     private void botaoSalvarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarSalaActionPerformed
@@ -219,10 +223,12 @@ public class EventRoomScreen extends javax.swing.JInternalFrame {
         }
                 
         Botoes(true,false,false);
+        LimpaCampo();
     }//GEN-LAST:event_botaoSalvarSalaActionPerformed
 
     private void botaoCancelarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarSalaActionPerformed
         Botoes(true,false,false);
+        LimpaCampo();
     }//GEN-LAST:event_botaoCancelarSalaActionPerformed
 
 

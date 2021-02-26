@@ -35,6 +35,11 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         botaoPesquisar.setEnabled(P);
     }
     
+    public void LimpaCampo() {
+        textFieldNome.setText("");
+        textFieldSobrenome.setText("");
+    }
+    
     /**
      * Creates new form PersonScreen
      */
@@ -68,6 +73,7 @@ public class PersonScreen extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Cadastro de Pessoas");
+        setPreferredSize(new java.awt.Dimension(468, 447));
 
         panelBotoes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -111,14 +117,14 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         );
         panelBotoesLayout.setVerticalGroup(
             panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotoesLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotoesLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoNovo)
                     .addComponent(botaoSalvar)
                     .addComponent(botaoPesquisar)
                     .addComponent(botaoCancelar))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         panelCampos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -189,9 +195,9 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(scrollPaneDados)
+            .addComponent(panelCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +206,7 @@ public class PersonScreen extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -217,9 +223,8 @@ public class PersonScreen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tableDadosMouseClicked
 
     private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
-        textFieldNome.setText("");
-        textFieldSobrenome.setText("");
         Botoes(false,true,true,false);
+        LimpaCampo();
     }//GEN-LAST:event_botaoNovoActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
@@ -232,10 +237,12 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         }
         
         Botoes(true,false,false,true);
+        LimpaCampo();
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
         Botoes(true,false,false,true);
+        LimpaCampo();
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
 

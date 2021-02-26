@@ -1,6 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import util.FileSpace;
 
 /**
  *
@@ -26,6 +29,11 @@ public class CoffeSpace {
         this.capacity = capacity;
         listPersonCoffe = new ArrayList();
     }
+    
+    public CoffeSpace(JSONObject json) {
+        this.name = json.getString("nome");
+        this.capacity = json.getInt("lotacao");
+    }
 
     // Métodos de acesso
     public String getName() {
@@ -44,6 +52,13 @@ public class CoffeSpace {
         this.capacity = capacity;
     }
     
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("nome", this.name);
+        json.put("lotacao", this.capacity);
+        return json;
+    }
+    
     // Metodo para manipular o ArrayList
     // Retorna a lista inteira de pessoas no espaço de café
     public ArrayList<Person> getListPersonCoffe() {
@@ -59,5 +74,42 @@ public class CoffeSpace {
     public void addPersonCoffe(Person P) {
         P.setSpace(this); // Informa o espaço de café que a pessoa está (Muda o atributo space da person para o espaço que ela está)
         listPersonCoffe.add(P); // Adiciona uma pessoa a um espaço de café
+    }
+    
+    // Insere um espaço de café na base de dados
+    public boolean PersistirSpace() {
+        JSONObject json = this.toJson();
+        
+        String base = FileSpace.Read();
+        JSONArray jA = new JSONArray();
+        if (!base.isEmpty() && base.length() > 5) {
+            jA = new JSONArray(base);
+        }
+        
+        jA.put(json);
+        
+        FileSpace.Write(jA.toString());
+        
+        return true;
+    }
+    
+    // Retorna um ArrayList (vetor) do tipo espaço de café
+    public static ArrayList<CoffeSpace> getSpaces() {
+        ArrayList<CoffeSpace> spaces = new ArrayList();
+        
+        // Ler a base de dados
+        String base = FileSpace.Read();
+        JSONArray jA = new JSONArray(base);
+        
+        if (base.isEmpty() || base.length() < 5) {
+            return null;
+        }
+        
+        for (int i = 0; i < jA.length(); i++) {
+            CoffeSpace C = new CoffeSpace(jA.getJSONObject(i));
+            spaces.add(C);
+        }
+        
+        return spaces;
     }
 }

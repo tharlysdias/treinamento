@@ -62,6 +62,11 @@ public class MenuScreen extends javax.swing.JFrame {
 
         espacoMenuItem.setMnemonic('a');
         espacoMenuItem.setText("Espaço");
+        espacoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                espacoMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(espacoMenuItem);
 
         menuBar.add(fileMenu);
@@ -93,6 +98,12 @@ public class MenuScreen extends javax.swing.JFrame {
         this.desktopPane.add(eventRoomScreen);
         eventRoomScreen.setVisible(true);
     }//GEN-LAST:event_salaMenuItemActionPerformed
+
+    private void espacoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espacoMenuItemActionPerformed
+        CoffeSpaceScreen coffeSpaceScreen = new CoffeSpaceScreen();
+        this.desktopPane.add(coffeSpaceScreen);
+        coffeSpaceScreen.setVisible(true);
+    }//GEN-LAST:event_espacoMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
