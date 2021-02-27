@@ -28,7 +28,7 @@ public class Person {
         this.lastName = lastName;
     }
     
-    // Converte JSON para Person
+    // Converte JSON para pessoa (Person)
     public Person(JSONObject json) {
         this.name = json.getString("nome");
         this.lastName = json.getString("sobrenome");
@@ -69,7 +69,7 @@ public class Person {
     }
     
     
-    // Converte Person para JSON (toJson)
+    // Converte pessoa (Person) para JSON (toJson)
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("nome", this.name);

@@ -37,9 +37,6 @@ public class ConsultDataController {
                     dataRoom.get(j).addPerson(dataPerson.get(j));
                 }
                 
-                if (dataPerson.get(i).getName().equalsIgnoreCase(dataRoom.get(i).getListPerson())) {
-                    
-                }
             } else if (dataRoom.size()%2 == 0) {
                 // Não pode dividir pelo número de salas
                 // A diferença de pessoas em cada sala tem que ser no máximo 1
