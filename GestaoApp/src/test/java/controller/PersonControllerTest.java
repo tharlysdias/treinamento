@@ -13,7 +13,7 @@ public class PersonControllerTest {
             boolean opLogico = personControl.equals(personControl);
             assertEquals(true, opLogico);
             
-            assertNull(personControl);
+            assertNotNull(personControl);
 	}
 
 	@Ignore

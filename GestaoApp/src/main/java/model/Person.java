@@ -90,7 +90,6 @@ public class Person {
         }
         
         jsonArray.put(json);
-        // jsonArray.put(0, base);
         
         File.Write(jsonArray.toString());
         

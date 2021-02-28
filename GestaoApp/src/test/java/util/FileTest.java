@@ -11,7 +11,7 @@ import org.junit.rules.TemporaryFolder;
 /**
  * Simula a criação de uma pasta e um arquivo temporario, utilizando a 
  * anotação Rule que cria a pasta antes da execução do teste
- * Simula a operação de execeção garantindo a criação do arquivo
+ * Simula a operação de exceção garantindo a criação do arquivo
  * 
  * @author tharlys
  */

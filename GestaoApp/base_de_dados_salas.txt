@@ -1,1 +1,1 @@
-[{"nome":"Treinamento","lotacao":25},{"nome":"Proway","lotacao":26}]
+[{"nome":"Treinamento","lotacao":25},{"nome":"Proway","lotacao":26},{"nome":"Desafio","lotacao":24}]

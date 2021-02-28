@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import model.CoffeSpace;
 import model.EventRoom;
 import model.Person;
@@ -10,42 +11,82 @@ import model.Person;
  * @author tharlys
  */
 public class ConsultDataController {
-    public static ArrayList<String[]> getDados(Person person, EventRoom eventRoom, CoffeSpace coffespace) {
-        ArrayList<String[]> Dados = new ArrayList();
+    public static ArrayList getDados() {
+        ArrayList<String[]> Consult = new ArrayList();
+        
+        // ArrayList Dados = new ArrayList();
         
         ArrayList<Person> P = Person.getPersons();
         ArrayList<EventRoom> E = EventRoom.getRooms();
         ArrayList<CoffeSpace> C = CoffeSpace.getSpaces();
         
-        ArrayList<Person> dataPerson = new ArrayList(P);
-        ArrayList<EventRoom> dataRoom = new ArrayList(E);
-        ArrayList<CoffeSpace> dataSpace = new ArrayList(C);
-        
-//        if(P!=null) {
-//            for(int i = 0; i < P.size(); i++) {
-//                P.get(i).getName();
-//
-//                dataPerson.add(P.get(i));
-//            }
-//        }
-        
-        for (int i = 0; i < dataPerson.size(); i++) {
-            
-            if (dataPerson.size()%2 == 0 && dataRoom.size()%2 == 0) {
-                for (int j = 0; j < (dataPerson.size()/2); j++) {
-                    
-                    dataRoom.get(j).addPerson(dataPerson.get(j));
-                }
+        List<Person> pessoa = new ArrayList<Person>();
+        int controle = 0;
+        for (int j = E.size(); j == 0; j--) {
+            for (double i = (P.size()/E.size()); i < 1; i--) {
                 
-            } else if (dataRoom.size()%2 == 0) {
-                // Não pode dividir pelo número de salas
-                // A diferença de pessoas em cada sala tem que ser no máximo 1
-            } else {
-                // A quantidade de pessoas e salas é impar
-                // Precisa respeitar a regra de no máximo 1 pessoa de diferença da outra sala
+                controle++;
+                
+                pessoa.add(P.get(controle));
+                E.get(controle).setListPerson(pessoa);
             }
         }
         
-        return Dados;
+        // Dados.add(E);
+        
+        if(E!=null) {
+            for(int i = 0; i < P.size(); i++) {
+                String d[] = new String[3];
+                d[0] = P.get(i).getName();
+                d[1] = E.get(i).getName();
+                
+                for (int j = 0; j < C.size(); j++) {
+                    d[2] = C.get(j).getName();
+                }
+
+                Consult.add(d);
+            }
+        }
+        
+        return Consult;
     }
+    
+    public static ArrayList getDadosSegundo() {
+        ArrayList<String[]> ConsultTwo = new ArrayList();
+        
+        ArrayList<Person> P = Person.getPersons();
+        ArrayList<EventRoom> E = EventRoom.getRooms();
+        ArrayList<CoffeSpace> C = CoffeSpace.getSpaces();
+        
+        List<Person> pessoaDois = new ArrayList<Person>();
+        int controleDois = 0;
+        for (int j = E.size(); j == 0; j--) {
+            for (double i = (P.size()/E.size()); i < 1; i--) {
+                
+                controleDois++;
+                
+                pessoaDois.add(P.get(controleDois));
+                E.get(controleDois).setListPerson(pessoaDois);
+            }
+        }
+        
+        if(E!=null) {
+            for(int i = 0; i < P.size(); i++) {
+                String d[] = new String[3];
+
+                d[0] = P.get(i).getName();
+                d[1] = E.get(i).getName();
+
+                for (int j = 0; j < (C.size()-1); j++) {
+                    d[2] = C.get(j).getName();
+                }
+
+                ConsultTwo.add(d);
+            }
+        }
+        
+        return ConsultTwo;
+    }
+    
+    
 }

@@ -8,10 +8,10 @@ package view;
 
 /**
  *
- * @author tharl
+ * @author tharlys
  */
 public class MenuScreen extends javax.swing.JFrame {
-
+    
     /** Creates new form MenuScreen */
     public MenuScreen() {
         initComponents();
@@ -28,16 +28,26 @@ public class MenuScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         pessoaMenuItem = new javax.swing.JMenuItem();
         salaMenuItem = new javax.swing.JMenuItem();
         espacoMenuItem = new javax.swing.JMenuItem();
+        consultarMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestão de Treinamento");
         setLocationByPlatform(true);
         setResizable(false);
+
+        desktopPane.setBackground(new java.awt.Color(240, 240, 240));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("GoDev");
+        desktopPane.add(jLabel1);
+        jLabel1.setBounds(60, 60, 360, 300);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cadastros");
@@ -68,6 +78,14 @@ public class MenuScreen extends javax.swing.JFrame {
             }
         });
         fileMenu.add(espacoMenuItem);
+
+        consultarMenuItem.setText("Consultar");
+        consultarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(consultarMenuItem);
 
         menuBar.add(fileMenu);
 
@@ -105,6 +123,12 @@ public class MenuScreen extends javax.swing.JFrame {
         coffeSpaceScreen.setVisible(true);
     }//GEN-LAST:event_espacoMenuItemActionPerformed
 
+    private void consultarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarMenuItemActionPerformed
+        ConsultDataScreen consultDataScreen = new ConsultDataScreen();
+        this.desktopPane.add(consultDataScreen);
+        consultDataScreen.setVisible(true);
+    }//GEN-LAST:event_consultarMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -141,9 +165,11 @@ public class MenuScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem consultarMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem espacoMenuItem;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem pessoaMenuItem;
     private javax.swing.JMenuItem salaMenuItem;

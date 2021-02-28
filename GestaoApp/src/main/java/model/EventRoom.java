@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import util.FileRoom;
@@ -16,7 +17,7 @@ public class EventRoom {
     private int capacity;
     
     // A sala do evento tem uma lista de pessoas
-    ArrayList<Person> listPerson;
+    List<Person> listPerson;
 
     // Criando construtores
     public EventRoom() {
@@ -32,7 +33,6 @@ public class EventRoom {
     public EventRoom(JSONObject json) {
         this.name = json.getString("nome");
         this.capacity = json.getInt("lotacao");
-        listPerson = new ArrayList();
     }
     
     
@@ -60,14 +60,14 @@ public class EventRoom {
         return json;
     }
     
-    // Metodo para manipular o ArrayList de pessoas
+    // Metodo para manipular o List de pessoas
     // Retorna a lista inteira de pessoas
-    public ArrayList<Person> getListPerson() {
+    public List<Person> getListPerson() {
         return listPerson;
     }
 
     // Atribui uma lista de pessoas ao atributo
-    public void setListPerson(ArrayList<Person> listPerson) {
+    public void setListPerson(List<Person> listPerson) {
         this.listPerson = listPerson;
     }
     
