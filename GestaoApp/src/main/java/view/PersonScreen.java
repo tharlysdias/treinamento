@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.PersonController;
@@ -15,6 +10,7 @@ import javax.swing.JOptionPane;
  */
 public class PersonScreen extends javax.swing.JInternalFrame {
 
+    // Model é o modelo do componente visual
     PersonTableModel modelo;
     
     // Carrega a tabela de pessoas
@@ -24,8 +20,6 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         
         tableDados.getColumnModel().getColumn(0).setPreferredWidth(50);
         tableDados.getColumnModel().getColumn(1).setPreferredWidth(50);
-        // tabelaPessoas.getColumnModel().getColumn(2).setPreferredWidth(70);
-        // tabelaPessoas.getColumnModel().getColumn(3).setPreferredWidth(70);
     }
     
     public void Botoes(boolean N, boolean S, boolean C, boolean P) {

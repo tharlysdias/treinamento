@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import model.CoffeSpace;
 import model.EventRoom;
@@ -13,8 +14,6 @@ import model.Person;
 public class ConsultDataController {
     public static ArrayList getDados() {
         ArrayList<String[]> Consult = new ArrayList();
-        
-        // ArrayList Dados = new ArrayList();
         
         ArrayList<Person> P = Person.getPersons();
         ArrayList<EventRoom> E = EventRoom.getRooms();
@@ -31,8 +30,6 @@ public class ConsultDataController {
                 E.get(controle).setListPerson(pessoa);
             }
         }
-        
-        // Dados.add(E);
         
         if(E!=null) {
             for(int i = 0; i < P.size(); i++) {
@@ -53,7 +50,7 @@ public class ConsultDataController {
     
     public static ArrayList getDadosSegundo() {
         ArrayList<String[]> ConsultTwo = new ArrayList();
-        
+             
         ArrayList<Person> P = Person.getPersons();
         ArrayList<EventRoom> E = EventRoom.getRooms();
         ArrayList<CoffeSpace> C = CoffeSpace.getSpaces();
@@ -72,9 +69,12 @@ public class ConsultDataController {
         
         if(E!=null) {
             for(int i = 0; i < P.size(); i++) {
-                String d[] = new String[3];
-
+                
+                String d[] = new String[3]; // 3 - quantidade de colunas da tabela
+                
+                Collections.reverse(P);
                 d[0] = P.get(i).getName();
+                
                 d[1] = E.get(i).getName();
 
                 for (int j = 0; j < (C.size()-1); j++) {

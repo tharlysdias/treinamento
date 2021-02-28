@@ -18,17 +18,20 @@ public class PersonTableModel extends AbstractTableModel {
     }
 
     public PersonTableModel(List<String[]> lista) {
-        linhas = new ArrayList<String[]>(lista);
+        linhas = new ArrayList<String[]>(lista); // Lista dos dados que a tabela vai ter
     }
 
+    // SobEscrita, pois estou sobrescrevendo um metodo que está na AbstractTableModel
     @Override
+    // Metodo que diz quantas colunas eu tenho
     public int getColumnCount() {
-        return colunas.length;
+        return colunas.length; // retorna o número de colunas tem na tabela
     }
 
     @Override
+    // Metodo que diz quantas linhas (pessoas) eu vou ter
     public int getRowCount() {
-        return linhas.size();
+        return linhas.size(); // retorna o número de pessoas que tenho
     }
 
     @Override
@@ -42,6 +45,7 @@ public class PersonTableModel extends AbstractTableModel {
     }
 
     @Override
+    // Metodo que vai dizer qual o valor deve ser exibido em cada linha e coluna
     public Object getValueAt(int rowIndex, int columnIndex) {
         // t - temporario
         String t[] = linhas.get(rowIndex);
@@ -101,13 +105,13 @@ public class PersonTableModel extends AbstractTableModel {
         fireTableRowsInserted(ultimoIndice, ultimoIndice);
     }
 
-    /* Remove a linha especificada. */
+    // Remove a linha especificada.
     public void remove(int indiceLinha) {
         linhas.remove(indiceLinha);
         fireTableRowsDeleted(indiceLinha, indiceLinha);
     }
 
-    /* Adiciona uma lista de Cliente ao final dos registros. */
+    // Adiciona uma lista de Cliente ao final dos registros.
     public void addLista(List<String[]> p) {
         // Pega o tamanho antigo da tabela.
         int tamanhoAntigo = getRowCount();
@@ -117,13 +121,13 @@ public class PersonTableModel extends AbstractTableModel {
         fireTableRowsInserted(tamanhoAntigo, getRowCount() - 1);
     }
 
-    /* Remove todos os registros. */
+    // Remove todos os registros.
     public void limpar() {
         linhas.clear();
         fireTableDataChanged();
     }
 
-    /* Verifica se este table model esta vazio. */
+    // Verifica se este table model esta vazio.
     public boolean isEmpty() {
         return linhas.isEmpty();
     }

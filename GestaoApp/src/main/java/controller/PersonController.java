@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import model.Person;
 
 /**
- *
+ * Classe que controla a aplicação, tanto a interação dos dados com a tela, 
+ * como também faz outros controles na aplicação (diversos)
+ * 
  * @author tharlys
  */
 public class PersonController {
@@ -13,7 +15,12 @@ public class PersonController {
         return person.Persistir();
     }
     
-    // Retorna um vetor de strings
+    /**
+     * Retorna um vetor de strings
+     * Evitando o envio do objeto (tipo pessoa) direto na interface
+     * 
+     * @return 
+     */
     public static ArrayList<String[]> getPersons() {
         // Vetor de strings para mostrar na interface
         ArrayList<String[]> Persons = new ArrayList();
