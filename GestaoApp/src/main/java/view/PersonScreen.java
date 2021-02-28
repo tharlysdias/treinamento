@@ -10,10 +10,16 @@ import javax.swing.JOptionPane;
  */
 public class PersonScreen extends javax.swing.JInternalFrame {
 
-    // Model é o modelo do componente visual
+    /**
+     * Model é o modelo do componente visual
+     * 
+     */
     PersonTableModel modelo;
     
-    // Carrega a tabela de pessoas
+    /**
+     * Carrega a tabela de pessoas
+     * 
+     */
     public void LoadTable() {
         modelo = new PersonTableModel(PersonController.getPersons());
         tableDados.setModel(modelo);
@@ -22,16 +28,29 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         tableDados.getColumnModel().getColumn(1).setPreferredWidth(50);
     }
     
-    public void Botoes(boolean N, boolean S, boolean C, boolean P) {
+    public void Botoes(boolean N, boolean S, boolean C) {
         botaoNovo.setEnabled(N);
         botaoSalvar.setEnabled(S);
         botaoCancelar.setEnabled(C);
-        botaoPesquisar.setEnabled(P);
     }
     
-    public void LimpaCampo() {
-        textFieldNome.setText("");
-        textFieldSobrenome.setText("");
+    public void ManipulaCampo(String modo) {
+        switch(modo) {
+            case "Limpa":
+                textFieldNome.setText("");
+                textFieldSobrenome.setText("");
+                break;
+            case "Bloqueia":
+                textFieldNome.setEnabled(false);
+                textFieldSobrenome.setEnabled(false);
+                break;
+            case "Desbloqueia":
+                textFieldNome.setEnabled(true);
+                textFieldSobrenome.setEnabled(true);
+                break;
+            default:
+                System.out.println("Modo inválido");
+        }
     }
     
     /**
@@ -40,7 +59,8 @@ public class PersonScreen extends javax.swing.JInternalFrame {
     public PersonScreen() {
         initComponents();
         LoadTable();
-        Botoes(true,false,false,true);
+        ManipulaCampo("Bloqueia");
+        Botoes(true,false,false);
     }
 
     /**
@@ -55,7 +75,6 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         panelBotoes = new javax.swing.JPanel();
         botaoNovo = new javax.swing.JButton();
         botaoSalvar = new javax.swing.JButton();
-        botaoPesquisar = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
         panelCampos = new javax.swing.JPanel();
         labelNome = new javax.swing.JLabel();
@@ -85,8 +104,6 @@ public class PersonScreen extends javax.swing.JInternalFrame {
             }
         });
 
-        botaoPesquisar.setText("Pesquisar");
-
         botaoCancelar.setText("Cancelar");
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,26 +116,23 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         panelBotoesLayout.setHorizontalGroup(
             panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotoesLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(48, 48, 48)
                 .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(botaoCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(66, 66, 66))
         );
         panelBotoesLayout.setVerticalGroup(
             panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotoesLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoNovo)
                     .addComponent(botaoSalvar)
-                    .addComponent(botaoPesquisar)
                     .addComponent(botaoCancelar))
-                .addGap(20, 20, 20))
+                .addGap(21, 21, 21))
         );
 
         panelCampos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -207,7 +221,7 @@ public class PersonScreen extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDadosMouseClicked
-        Botoes(true,false,false,true);
+        Botoes(true,false,false);
         int index = tableDados.getSelectedRow();
         if(index >= 0 && index < modelo.getRowCount()) {
             String temp[] = modelo.getPerson(index);
@@ -217,33 +231,40 @@ public class PersonScreen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tableDadosMouseClicked
 
     private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
-        Botoes(false,true,true,false);
-        LimpaCampo();
+        Botoes(false,true,true);
+        ManipulaCampo("Limpa");
+        ManipulaCampo("Desbloqueia");
     }//GEN-LAST:event_botaoNovoActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         
-        if (PersonController.SavePerson(textFieldNome.getText(),textFieldSobrenome.getText())) {
-            this.LoadTable();
-            JOptionPane.showMessageDialog(this, "Pessoa salva com sucesso!");
+        if ((textFieldNome.getText() == null || textFieldNome.getText().trim().isEmpty()) || (textFieldSobrenome.getText() == null || textFieldSobrenome.getText().trim().isEmpty())) {
+            JOptionPane.showMessageDialog(this, "Você precisa preencher todos os campos!");
+            Botoes(false,true,true);
         } else {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar a pessoa!");
+            if (PersonController.SavePerson(textFieldNome.getText(),textFieldSobrenome.getText())) {
+                this.LoadTable();
+                JOptionPane.showMessageDialog(this, "Pessoa salva com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao salvar a pessoa!");
+            }
+
+            Botoes(true,false,false);
+            ManipulaCampo("Limpa");
+            ManipulaCampo("Bloqueia");
         }
-        
-        Botoes(true,false,false,true);
-        LimpaCampo();
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        Botoes(true,false,false,true);
-        LimpaCampo();
+        Botoes(true,false,false);
+        ManipulaCampo("Limpa");
+        ManipulaCampo("Bloqueia");
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCancelar;
     private javax.swing.JButton botaoNovo;
-    private javax.swing.JButton botaoPesquisar;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSobrenome;

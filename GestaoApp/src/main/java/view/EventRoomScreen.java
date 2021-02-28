@@ -31,9 +31,23 @@ public class EventRoomScreen extends javax.swing.JInternalFrame {
         botaoCancelarSala.setEnabled(C);
     }
     
-    public void LimpaCampo() {
-        campoNomeSala.setText("");
-        campoLotacaoSala.setText("");
+    public void ManipulaCampo(String modo) {
+        switch(modo) {
+            case "Limpa":
+                campoNomeSala.setText("");
+                campoLotacaoSala.setText("");
+                break;
+            case "Bloqueia":
+                campoNomeSala.setEnabled(false);
+                campoLotacaoSala.setEnabled(false);
+                break;
+            case "Desbloqueia":
+                campoNomeSala.setEnabled(true);
+                campoLotacaoSala.setEnabled(true);
+                break;
+            default:
+                System.out.println("Modo inválido");
+        }
     }
     
     /**
@@ -42,6 +56,7 @@ public class EventRoomScreen extends javax.swing.JInternalFrame {
     public EventRoomScreen() {
         initComponents();
         LoadTableRoom();
+        ManipulaCampo("Bloqueia");
         Botoes(true,false,false);
     }
 
@@ -209,26 +224,36 @@ public class EventRoomScreen extends javax.swing.JInternalFrame {
 
     private void botaoNovoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoSalaActionPerformed
         Botoes(false,true,true);
-        LimpaCampo();
+        ManipulaCampo("Limpa");
+        ManipulaCampo("Desbloqueia");
     }//GEN-LAST:event_botaoNovoSalaActionPerformed
 
     private void botaoSalvarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarSalaActionPerformed
         
-        // Converte uma String para um inteiro
-        if (EventRoomController.SaveRoom(campoNomeSala.getText(),Integer.parseInt(campoLotacaoSala.getText()))) {
-            this.LoadTableRoom();
-            JOptionPane.showMessageDialog(this, "Sala salva com sucesso!");
+        /**
+         * Converte uma String para um inteiro
+         * 
+         */
+        if ((campoNomeSala.getText() == null || campoNomeSala.getText().trim().isEmpty()) || (campoLotacaoSala.getText() == null || campoLotacaoSala.getText().trim().isEmpty())) {
+            JOptionPane.showMessageDialog(this, "Você precisa preencher todos os campos!");
+            Botoes(false,true,true);
         } else {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar a sala!");
+            if (EventRoomController.SaveRoom(campoNomeSala.getText(),Integer.parseInt(campoLotacaoSala.getText()))) {
+                this.LoadTableRoom();
+                JOptionPane.showMessageDialog(this, "Sala salva com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao salvar a sala!");
+            }
+            Botoes(true,false,false);
+            ManipulaCampo("Limpa");
+            ManipulaCampo("Bloqueia");
         }
-                
-        Botoes(true,false,false);
-        LimpaCampo();
     }//GEN-LAST:event_botaoSalvarSalaActionPerformed
 
     private void botaoCancelarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarSalaActionPerformed
         Botoes(true,false,false);
-        LimpaCampo();
+        ManipulaCampo("Limpa");
+        ManipulaCampo("Bloqueia");
     }//GEN-LAST:event_botaoCancelarSalaActionPerformed
 
 

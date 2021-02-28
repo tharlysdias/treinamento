@@ -16,7 +16,7 @@ public class PersonController {
     }
     
     /**
-     * Retorna um vetor de strings
+     * Metodo retorna um vetor de strings
      * Evitando o envio do objeto (tipo pessoa) direto na interface
      * 
      * @return 
@@ -27,7 +27,7 @@ public class PersonController {
         
         ArrayList<Person> P = Person.getPersons();
         
-        // Se a lista de pessoas for diferente de nulo eu faço o tratamento
+        // Se a lista de pessoas for diferente de nulo, faz o tratamento
         if(P!=null) {
             for(int i = 0; i < P.size(); i++) {
                 String p[] = new String[2];

@@ -48,7 +48,7 @@ public class Person {
     
     /**
      * Getters and Setters
-     * Métodos de acesso
+     * Metodos de acesso
      * 
      * @return 
      */

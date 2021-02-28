@@ -111,7 +111,7 @@ public class PersonTableModel extends AbstractTableModel {
         fireTableRowsDeleted(indiceLinha, indiceLinha);
     }
 
-    // Adiciona uma lista de Cliente ao final dos registros.
+    // Adiciona uma lista de pessoas ao final dos registros.
     public void addLista(List<String[]> p) {
         // Pega o tamanho antigo da tabela.
         int tamanhoAntigo = getRowCount();

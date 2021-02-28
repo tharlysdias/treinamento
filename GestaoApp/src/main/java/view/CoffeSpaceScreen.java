@@ -93,9 +93,16 @@ public class CoffeSpaceScreen extends javax.swing.JInternalFrame {
                 "Nome", "Lotação"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -228,21 +235,35 @@ public class CoffeSpaceScreen extends javax.swing.JInternalFrame {
     private void botaoNovoEspacoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoEspacoActionPerformed
         Botoes(false,true,true);
         ManipulaCampo("Limpa");
-        ManipulaCampo("Desbloqueia");
+        
+        int linhaCafe = tabelaEspacos.getRowCount();
+        if (linhaCafe >= 2) {
+            ManipulaCampo("Bloqueia");
+            Botoes(false,false,false);
+            JOptionPane.showMessageDialog(this, "Você já possui dois espaços de café cadastrados!");
+        } else {
+            ManipulaCampo("Desbloqueia");
+            Botoes(false,true,true);
+        }
     }//GEN-LAST:event_botaoNovoEspacoActionPerformed
 
     private void botaoSalvarEspacoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarEspacoActionPerformed
         
-        if (CoffeSpaceController.SaveSpace(campoNomeEspaco.getText(),Integer.parseInt(campoLotacaoEspaco.getText()))) {
-            this.LoadTableSpace();
-            JOptionPane.showMessageDialog(this, "Espaço de café salvo com sucesso!");
+        if ((campoNomeEspaco.getText() == null || campoNomeEspaco.getText().trim().isEmpty()) || (campoLotacaoEspaco.getText() == null || campoLotacaoEspaco.getText().trim().isEmpty())) {
+            JOptionPane.showMessageDialog(this, "Você precisa preencher todos os campos!");
+            Botoes(false,true,true);
         } else {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar o espaço de café!");
+            if (CoffeSpaceController.SaveSpace(campoNomeEspaco.getText(),Integer.parseInt(campoLotacaoEspaco.getText()))) {
+                this.LoadTableSpace();
+                JOptionPane.showMessageDialog(this, "Espaço de café salvo com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao salvar o espaço de café!");
+            }
+
+            Botoes(true,false,false);
+            ManipulaCampo("Limpa");
+            ManipulaCampo("Bloqueia");
         }
-                
-        Botoes(true,false,false);
-        ManipulaCampo("Limpa");
-        ManipulaCampo("Bloqueia");
     }//GEN-LAST:event_botaoSalvarEspacoActionPerformed
 
     private void botaoCancelarEspacoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarEspacoActionPerformed
