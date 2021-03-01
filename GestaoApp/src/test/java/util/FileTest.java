@@ -18,17 +18,25 @@ import org.junit.rules.TemporaryFolder;
 public class FileTest {
     
     @Rule
-    // Anotação Rule: A pasta temporaria (tempFolder), será criada antes da execução do teste
+    /**
+     *  Anotação Rule: A pasta temporaria (tempFolder), será criada antes da execução do teste
+     */
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Test
     public void shouldCreateNewFileInTemporaryFolder() throws IOException {
-        // Cria um arquivo na pasta temporaria
+        /**
+         *  Cria um arquivo na pasta temporaria
+         */
         File created = tempFolder.newFile("base_de_dados.txt");
         
-        // Verifica se o arquivo foi criado
+        /**
+         *  Verifica se o arquivo foi criado
+         */
         assertTrue(created.isFile());
-        // Verifica se a raiz do arquivo é o mesmo do arquivo criado acima
+        /**
+         *  Verifica se a raiz do arquivo é o mesmo do arquivo criado acima
+         */
         assertEquals(tempFolder.getRoot(), created.getParentFile());
     }
 

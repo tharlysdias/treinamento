@@ -15,12 +15,8 @@ public class PersonController {
         return person.Persistir();
     }
     
-    /**
-     * Metodo retorna um vetor de strings
-     * Evitando o envio do objeto (tipo pessoa) direto na interface
-     * 
-     * @return 
-     */
+    // Metodo retorna um vetor de strings
+    // Evita o envio do objeto (tipo pessoa) direto na interface
     public static ArrayList<String[]> getPersons() {
         // Vetor de strings para mostrar na interface
         ArrayList<String[]> Persons = new ArrayList();

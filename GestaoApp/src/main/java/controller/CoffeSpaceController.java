@@ -13,11 +13,18 @@ public class CoffeSpaceController {
         return c.PersistirSpace();
     }
     
-    // Retorna um ArrayList (vetor) de Strings
+    /**
+     * Retorna um ArrayList (vetor) de Strings
+     * 
+     * @return
+     */
     public static ArrayList<String[]> getSpaces() {
         ArrayList<String[]> Spaces = new ArrayList();
         
-        // Mapear o objeto do tipo espaço de café para um vetor de String
+        /**
+         *  Mapear o objeto do tipo espaço de café para um vetor de String
+         *  
+         */
         ArrayList<CoffeSpace> C = CoffeSpace.getSpaces();
         
         if (C != null) {

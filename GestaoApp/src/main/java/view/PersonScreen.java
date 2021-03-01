@@ -10,16 +10,10 @@ import javax.swing.JOptionPane;
  */
 public class PersonScreen extends javax.swing.JInternalFrame {
 
-    /**
-     * Model é o modelo do componente visual
-     * 
-     */
+    // Model é o modelo do componente visual
     PersonTableModel modelo;
     
-    /**
-     * Carrega a tabela de pessoas
-     * 
-     */
+    // Carrega a tabela de pessoas
     public void LoadTable() {
         modelo = new PersonTableModel(PersonController.getPersons());
         tableDados.setModel(modelo);

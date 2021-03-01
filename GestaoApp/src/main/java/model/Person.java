@@ -13,20 +13,14 @@ import util.File;
  */
 public class Person {
     
-    /**
-     * Atributos da pessoa (Estão privados para garantir o encapsulamento das informações de cada objeto).
-     * 
-     */
+    // Atributos da pessoa (Estão privados para garantir o encapsulamento das informações de cada objeto).
     private String name;
     private String lastName;
     
     private EventRoom room; // A pessoa está dentro de uma sala
     private CoffeSpace space; // A pessoa está dentro de um espaço de café
     
-    /**
-     * Criacao dos Construtores
-     * 
-     */
+    // Criacao dos Construtores
     public Person() {
         
     }
@@ -36,22 +30,14 @@ public class Person {
         this.lastName = lastName;
     }
     
-    /**
-     * Converte JSON para pessoa (Person)
-     * 
-     * @param json 
-     */
+    // Converte JSON para pessoa (Person)
     public Person(JSONObject json) {
         this.name = json.getString("nome");
         this.lastName = json.getString("sobrenome");
     }
     
-    /**
-     * Getters and Setters
-     * Metodos de acesso
-     * 
-     * @return 
-     */
+    // Getters and Setters
+    // Metodos de acesso
     public String getName() {
         return name;
     }
@@ -85,11 +71,7 @@ public class Person {
     }
     
     
-    /**
-     * Converte pessoa (Person) para JSON (toJson)
-     * 
-     * @return 
-     */
+    // Converte pessoa (Person) para JSON (toJson)
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("nome", this.name);
@@ -97,12 +79,8 @@ public class Person {
         return json;
     }
     
-    /**
-     * Persistir dados no arquivo
-     * Metodo que insere uma pessoa na base de dados
-     * 
-     * @return 
-     */
+    // Persistir dados no arquivo
+    // Metodo que insere uma pessoa na base de dados
     public boolean Persistir() {
         JSONObject json = this.toJson(); // JSON da pessoa
         // Recuperar as pessoas do arquivo para poder inserir no arquivo
@@ -120,11 +98,7 @@ public class Person {
         return true;
     }
     
-    /**
-     * Metodo que retorna todos os alunos da base de dados
-     * 
-     * @return 
-     */
+    // Metodo que retorna todos os alunos da base de dados
     public static ArrayList<Person> getPersons() {
         ArrayList<Person> persons = new ArrayList();
         String base = File.Read(); // Conteudo do arquivo de texto
