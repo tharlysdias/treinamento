@@ -7,7 +7,7 @@ import javax.persistence.Id;
 /**
  * @author Tharlys de Souza Dias <tharlys.souza@outlook.com>
  */
-public class CoffeSpace {
+public class Coffee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class CoffeSpace {
 //    // O espaço de café tem uma lista de pessoas
 //    ArrayList<Person> listPersonCoffe;
 //
-//    public CoffeSpace(JSONObject json) {
+//    public Coffee(JSONObject json) {
 //        this.name = json.getString("nome");
 //        this.capacity = json.getInt("lotacao");
 //    }
@@ -54,8 +54,8 @@ public class CoffeSpace {
 //    }
 //
 //    // Retorna um ArrayList (vetor) do tipo espaço de café
-//    public static ArrayList<CoffeSpace> getSpaces() {
-//        ArrayList<CoffeSpace> spaces = new ArrayList();
+//    public static ArrayList<Coffee> getSpaces() {
+//        ArrayList<Coffee> spaces = new ArrayList();
 //
 //        // Ler a base de dados
 //        String base = FileSpace.Read();
@@ -66,7 +66,7 @@ public class CoffeSpace {
 //        }
 //
 //        for (int i = 0; i < jA.length(); i++) {
-//            CoffeSpace C = new CoffeSpace(jA.getJSONObject(i));
+//            Coffee C = new Coffee(jA.getJSONObject(i));
 //            spaces.add(C);
 //        }
 //

@@ -5,7 +5,10 @@
  */
 package view;
 
-import controller.ConsultDataController;
+import com.proway.treinamento.coffee.Coffee;
+import com.proway.treinamento.event.Event;
+import com.proway.treinamento.person.Person;
+import com.proway.treinamento.person.PersonService;
 import util.ConsultDataTableModel;
 
 /**
@@ -16,15 +19,15 @@ public class ConsultDataScreen extends javax.swing.JInternalFrame {
 
     ConsultDataTableModel Modelo;
     
-    ConsultDataController consultDataController = new ConsultDataController();
+    PersonService personService = new PersonService();
     
-    PersonScreen personScreen = new PersonScreen();
-    EventRoomScreen eventRoomScreen = new EventRoomScreen();
-    CoffeSpaceScreen coffeSpaceScreen = new CoffeSpaceScreen();
+    Person personScreen = new Person();
+    Event eventRoomScreen = new Event();
+    Coffee coffeSpaceScreen = new Coffee();
     
     // Carrega a tabela de pessoas
     public void LoadTableConsult() {
-        Modelo = new ConsultDataTableModel(ConsultDataController.getDados());
+        Modelo = new ConsultDataTableModel(PersonService.getDados());
         tabelaDados.setModel(Modelo);
 
         tabelaDados.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -34,7 +37,7 @@ public class ConsultDataScreen extends javax.swing.JInternalFrame {
     
     // Carrega a tabela de pessoas
     public void LoadTableConsultSegunda() {
-        Modelo = new ConsultDataTableModel(ConsultDataController.getDadosSegundo());
+        Modelo = new ConsultDataTableModel(PersonService.getDadosSegundo());
         tabelaDadosSegunda.setModel(Modelo);
 
         tabelaDadosSegunda.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -51,9 +54,9 @@ public class ConsultDataScreen extends javax.swing.JInternalFrame {
         LoadTableConsult();
         LoadTableConsultSegunda();
         
-        personScreen.LoadTable();
-        eventRoomScreen.LoadTableRoom();
-        coffeSpaceScreen.LoadTableSpace();
+//        personScreen.LoadTable();
+//        eventRoomScreen.LoadTableRoom();
+//        coffeSpaceScreen.LoadTableSpace();
     }
 
     /**

@@ -5,8 +5,6 @@
  */
 package view;
 
-import com.proway.treinamento.event.EventRoomController;
-import com.proway.treinamento.event.EventRoomTableModel;
 import javax.swing.JOptionPane;
 
 /**

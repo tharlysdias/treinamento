@@ -6,7 +6,7 @@
 package view;
 
 import com.proway.treinamento.coffee.CoffeSpaceController;
-import com.proway.treinamento.coffee.CoffeSpaceTableModel;
+
 import javax.swing.JOptionPane;
 
 /**

@@ -1,7 +1,5 @@
 package view;
 
-import com.proway.treinamento.person.PersonController;
-import com.proway.treinamento.person.PersonTableModel;
 import javax.swing.JOptionPane;
 
 /**

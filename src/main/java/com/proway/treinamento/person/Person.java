@@ -1,14 +1,15 @@
 package com.proway.treinamento.person;
 
+import com.proway.treinamento.coffee.Coffee;
+import com.proway.treinamento.event.Event;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Trata-se da {@link Person} que o sistema possui.
@@ -27,6 +28,18 @@ public class Person {
     private Long id;
     private String name;
     private String lastName;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "person_event",
+            joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id", referencedColumnName = "id"))
+    private List<Event> events = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "person_coffee",
+            joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "coffee_id", referencedColumnName = "id"))
+    private List<Coffee> coffees = new ArrayList<>();
 
 //    // Converte JSON para pessoa (Person)
 //    public Person(JSONObject json) {
