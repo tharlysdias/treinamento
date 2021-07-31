@@ -1,5 +1,10 @@
 package com.proway.treinamento.coffee;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -7,6 +12,10 @@ import javax.persistence.Id;
 /**
  * @author Tharlys de Souza Dias <tharlys.souza@outlook.com>
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Coffee {
 
     @Id
@@ -14,6 +23,15 @@ public class Coffee {
     private Long id;
     private String name;
     private int capacity;
+
+    //    @ManyToMany
+//    private List<Person> people = new ArrayList<>();
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "coffee_person",
+//            joinColumns = @JoinColumn(name = "coffee_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"))
+//    private List<Person> people = new ArrayList<>();
 
 //    // O espaço de café tem uma lista de pessoas
 //    ArrayList<Person> listPersonCoffe;

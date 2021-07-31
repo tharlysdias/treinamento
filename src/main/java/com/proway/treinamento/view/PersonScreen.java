@@ -1,33 +1,32 @@
 package view;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
- *
  * @author tharlys
  */
 public class PersonScreen extends javax.swing.JInternalFrame {
 
     // Model é o modelo do componente visual
     PersonTableModel modelo;
-    
+
     // Carrega a tabela de pessoas
     public void LoadTable() {
         modelo = new PersonTableModel(PersonController.getPersons());
         tableDados.setModel(modelo);
-        
+
         tableDados.getColumnModel().getColumn(0).setPreferredWidth(50);
         tableDados.getColumnModel().getColumn(1).setPreferredWidth(50);
     }
-    
+
     public void Botoes(boolean N, boolean S, boolean C) {
         botaoNovo.setEnabled(N);
         botaoSalvar.setEnabled(S);
         botaoCancelar.setEnabled(C);
     }
-    
+
     public void ManipulaCampo(String modo) {
-        switch(modo) {
+        switch (modo) {
             case "Limpa":
                 textFieldNome.setText("");
                 textFieldSobrenome.setText("");
@@ -44,7 +43,7 @@ public class PersonScreen extends javax.swing.JInternalFrame {
                 System.out.println("Modo inválido");
         }
     }
-    
+
     /**
      * Creates new form PersonScreen
      */
@@ -52,7 +51,7 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         initComponents();
         LoadTable();
         ManipulaCampo("Bloqueia");
-        Botoes(true,false,false);
+        Botoes(true, false, false);
     }
 
     /**
@@ -106,25 +105,25 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         javax.swing.GroupLayout panelBotoesLayout = new javax.swing.GroupLayout(panelBotoes);
         panelBotoes.setLayout(panelBotoesLayout);
         panelBotoesLayout.setHorizontalGroup(
-            panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotoesLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botaoCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(66, 66, 66))
+                panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelBotoesLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(66, 66, 66))
         );
         panelBotoesLayout.setVerticalGroup(
-            panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotoesLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoNovo)
-                    .addComponent(botaoSalvar)
-                    .addComponent(botaoCancelar))
-                .addGap(21, 21, 21))
+                panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotoesLayout.createSequentialGroup()
+                                .addContainerGap(24, Short.MAX_VALUE)
+                                .addGroup(panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(botaoNovo)
+                                        .addComponent(botaoSalvar)
+                                        .addComponent(botaoCancelar))
+                                .addGap(21, 21, 21))
         );
 
         panelCampos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -136,46 +135,46 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         javax.swing.GroupLayout panelCamposLayout = new javax.swing.GroupLayout(panelCampos);
         panelCampos.setLayout(panelCamposLayout);
         panelCamposLayout.setHorizontalGroup(
-            panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCamposLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelSobrenome)
-                    .addComponent(labelNome))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textFieldNome)
-                    .addComponent(textFieldSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelCamposLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelSobrenome)
+                                        .addComponent(labelNome))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(textFieldNome)
+                                        .addComponent(textFieldSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCamposLayout.setVerticalGroup(
-            panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCamposLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNome)
-                    .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelSobrenome)
-                    .addComponent(textFieldSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelCamposLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(labelNome)
+                                        .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(labelSobrenome)
+                                        .addComponent(textFieldSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         tableDados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][]{
 
-            },
-            new String [] {
-                "Nome", "Sobrenome", "Sala", "Espaço"
-            }
+                },
+                new String[]{
+                        "Nome", "Sobrenome", "Sala", "Espaço"
+                }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         tableDados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,28 +193,28 @@ public class PersonScreen extends javax.swing.JInternalFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneDados)
-            .addComponent(panelCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scrollPaneDados)
+                        .addComponent(panelCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(scrollPaneDados, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(scrollPaneDados, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDadosMouseClicked
-        Botoes(true,false,false);
+        Botoes(true, false, false);
         int index = tableDados.getSelectedRow();
-        if(index >= 0 && index < modelo.getRowCount()) {
+        if (index >= 0 && index < modelo.getRowCount()) {
             String temp[] = modelo.getPerson(index);
             textFieldNome.setText(temp[0]);
             textFieldSobrenome.setText(temp[1]);
@@ -223,32 +222,32 @@ public class PersonScreen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tableDadosMouseClicked
 
     private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
-        Botoes(false,true,true);
+        Botoes(false, true, true);
         ManipulaCampo("Limpa");
         ManipulaCampo("Desbloqueia");
     }//GEN-LAST:event_botaoNovoActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        
+
         if ((textFieldNome.getText() == null || textFieldNome.getText().trim().isEmpty()) || (textFieldSobrenome.getText() == null || textFieldSobrenome.getText().trim().isEmpty())) {
             JOptionPane.showMessageDialog(this, "Você precisa preencher todos os campos!");
-            Botoes(false,true,true);
+            Botoes(false, true, true);
         } else {
-            if (PersonController.SavePerson(textFieldNome.getText(),textFieldSobrenome.getText())) {
+            if (PersonController.SavePerson(textFieldNome.getText(), textFieldSobrenome.getText())) {
                 this.LoadTable();
                 JOptionPane.showMessageDialog(this, "Pessoa salva com sucesso!");
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao salvar a pessoa!");
             }
 
-            Botoes(true,false,false);
+            Botoes(true, false, false);
             ManipulaCampo("Limpa");
             ManipulaCampo("Bloqueia");
         }
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        Botoes(true,false,false);
+        Botoes(true, false, false);
         ManipulaCampo("Limpa");
         ManipulaCampo("Bloqueia");
     }//GEN-LAST:event_botaoCancelarActionPerformed

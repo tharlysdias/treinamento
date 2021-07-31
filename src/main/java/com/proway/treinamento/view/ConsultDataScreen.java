@@ -3,28 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package com.proway.treinamento.view;
 
 import com.proway.treinamento.coffee.Coffee;
 import com.proway.treinamento.event.Event;
 import com.proway.treinamento.person.Person;
 import com.proway.treinamento.person.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import util.ConsultDataTableModel;
 
 /**
- *
  * @author tharl
  */
 public class ConsultDataScreen extends javax.swing.JInternalFrame {
 
     ConsultDataTableModel Modelo;
-    
-    PersonService personService = new PersonService();
-    
+
+    @Autowired
+    private PersonService personService;
+
     Person personScreen = new Person();
     Event eventRoomScreen = new Event();
     Coffee coffeSpaceScreen = new Coffee();
-    
+
     // Carrega a tabela de pessoas
     public void LoadTableConsult() {
         Modelo = new ConsultDataTableModel(PersonService.getDados());
@@ -34,7 +35,7 @@ public class ConsultDataScreen extends javax.swing.JInternalFrame {
         tabelaDados.getColumnModel().getColumn(1).setPreferredWidth(50);
         tabelaDados.getColumnModel().getColumn(2).setPreferredWidth(50);
     }
-    
+
     // Carrega a tabela de pessoas
     public void LoadTableConsultSegunda() {
         Modelo = new ConsultDataTableModel(PersonService.getDadosSegundo());
@@ -44,8 +45,8 @@ public class ConsultDataScreen extends javax.swing.JInternalFrame {
         tabelaDadosSegunda.getColumnModel().getColumn(1).setPreferredWidth(50);
         tabelaDadosSegunda.getColumnModel().getColumn(2).setPreferredWidth(50);
     }
-    
-    
+
+
     /**
      * Creates new form ConsultDataScreen
      */
@@ -53,7 +54,7 @@ public class ConsultDataScreen extends javax.swing.JInternalFrame {
         initComponents();
         LoadTableConsult();
         LoadTableConsultSegunda();
-        
+
 //        personScreen.LoadTable();
 //        eventRoomScreen.LoadTableRoom();
 //        coffeSpaceScreen.LoadTableSpace();
@@ -80,37 +81,37 @@ public class ConsultDataScreen extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(468, 447));
 
         tabelaDados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][]{
 
-            },
-            new String [] {
-                "Pessoas", "Salas", "Espaços de Café"
-            }
+                },
+                new String[]{
+                        "Pessoas", "Salas", "Espaços de Café"
+                }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         scrollPaneTabelaDados.setViewportView(tabelaDados);
 
         tabelaDadosSegunda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][]{
 
-            },
-            new String [] {
-                "Pessoas", "Salas", "Espaços de Café"
-            }
+                },
+                new String[]{
+                        "Pessoas", "Salas", "Espaços de Café"
+                }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         scrollPaneTabelaDados1.setViewportView(tabelaDadosSegunda);
@@ -126,27 +127,27 @@ public class ConsultDataScreen extends javax.swing.JInternalFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneTabelaDados1)
-            .addComponent(scrollPaneTabelaDados, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelTitleDois)
-                    .addComponent(labelTitleUm))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scrollPaneTabelaDados1)
+                        .addComponent(scrollPaneTabelaDados, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(LabelTitleDois)
+                                        .addComponent(labelTitleUm))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelTitleUm)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneTabelaDados, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelTitleDois)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneTabelaDados1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(labelTitleUm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(scrollPaneTabelaDados, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelTitleDois)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(scrollPaneTabelaDados1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
         );
 
         pack();

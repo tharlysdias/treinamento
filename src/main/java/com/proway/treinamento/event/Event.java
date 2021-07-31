@@ -1,7 +1,6 @@
 package com.proway.treinamento.event;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,7 +13,6 @@ import javax.persistence.Id;
  * @author Tharlys de Souza Dias <tharlys.souza@outlook.com>
  */
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -25,6 +23,15 @@ public class Event {
     private Long id;
     private String name;
     private int capacity;
+
+    //    @ManyToMany
+//    private List<Person> people = new ArrayList<>();
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "event_person",
+//            joinColumns = @JoinColumn(name = "event_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"))
+//    private List<Person> people = new ArrayList<>();
 
 //    // A sala do evento tem uma lista de pessoas
 //    List<Person> listPerson;

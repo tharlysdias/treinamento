@@ -19,7 +19,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 public class Person {
 
@@ -29,17 +28,20 @@ public class Person {
     private String name;
     private String lastName;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "person_event",
             joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "event_id", referencedColumnName = "id"))
     private List<Event> events = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "person_coffee",
             joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "coffee_id", referencedColumnName = "id"))
     private List<Coffee> coffees = new ArrayList<>();
+
+//    @ManyToMany
+//    private List<Coffee> coffees = new ArrayList<>();
 
 //    // Converte JSON para pessoa (Person)
 //    public Person(JSONObject json) {
