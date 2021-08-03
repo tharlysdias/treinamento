@@ -1,0 +1,50 @@
+{
+  "name": "Person",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID",
+      "javadoc": "The ID attribute."
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "javadoc": "The firstname attribute.",
+      "fieldValidateRules": ["required", "minlength", "pattern"],
+      "fieldValidateRulesMinlength": "3",
+      "fieldValidateRulesPattern": "^[A-Z][a-z]+\\d$"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "javadoc": "The lastname attribute."
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "person",
+      "relationshipName": "event",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "coffee",
+      "otherEntityRelationshipName": "person",
+      "relationshipName": "coffee",
+      "ownerSide": true
+    }
+  ],
+  "javadoc": "The Person entity.\\n@author Tharlys Dias.",
+  "entityTableName": "person",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["treinamento"],
+  "changelogDate": "20210803004512"
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Event",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID",
+      "javadoc": "The ID attribute."
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "The firstname attribute.",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "capacity",
+      "fieldType": "Integer",
+      "javadoc": "The lastname attribute.",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "person",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "person",
+      "ownerSide": false
+    }
+  ],
+  "javadoc": "The Event entity.\\n@author Tharlys Dias.",
+  "entityTableName": "event",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["treinamento"],
+  "changelogDate": "20210803004513"
+}

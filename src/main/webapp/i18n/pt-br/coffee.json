@@ -1,0 +1,31 @@
+{
+  "treinamentoApp": {
+    "coffee": {
+      "home": {
+        "title": "Coffees",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Coffee",
+        "createOrEditLabel": "Criar ou editar Coffee",
+        "notFound": "Nenhum Coffee encontrado"
+      },
+      "created": "Um novo Coffee foi criado com o identificador {{ param }}",
+      "updated": "Um Coffee foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Coffee foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Coffee {{ id }}?"
+      },
+      "detail": {
+        "title": "Coffee"
+      },
+      "id": "Id",
+      "name": "Name",
+      "capacity": "Capacity",
+      "person": "Person",
+      "help": {
+        "id": "The ID attribute.",
+        "name": "The firstname attribute.",
+        "capacity": "The lastname attribute."
+      }
+    }
+  }
+}

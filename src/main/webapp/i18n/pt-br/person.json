@@ -1,0 +1,32 @@
+{
+  "treinamentoApp": {
+    "person": {
+      "home": {
+        "title": "People",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Person",
+        "createOrEditLabel": "Criar ou editar Person",
+        "notFound": "Nenhum Person encontrado"
+      },
+      "created": "Um novo Person foi criado com o identificador {{ param }}",
+      "updated": "Um Person foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Person foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Person {{ id }}?"
+      },
+      "detail": {
+        "title": "Person"
+      },
+      "id": "Id",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "event": "Event",
+      "coffee": "Coffee",
+      "help": {
+        "id": "The ID attribute.",
+        "firstName": "The firstname attribute.",
+        "lastName": "The lastname attribute."
+      }
+    }
+  }
+}

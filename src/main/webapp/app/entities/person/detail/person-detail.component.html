@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="person">
+      <h2 data-cy="personDetailsHeading"><span jhiTranslate="treinamentoApp.person.detail.title">Person</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="treinamentoApp.person.id" [ngbTooltip]="'treinamentoApp.person.help.id' | translate">Id</span></dt>
+        <dd>
+          <span>{{ person.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="treinamentoApp.person.firstName" [ngbTooltip]="'treinamentoApp.person.help.firstName' | translate"
+            >First Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ person.firstName }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="treinamentoApp.person.lastName" [ngbTooltip]="'treinamentoApp.person.help.lastName' | translate"
+            >Last Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ person.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="treinamentoApp.person.event">Event</span></dt>
+        <dd>
+          <span *ngFor="let event of person.events; let last = last">
+            <a [routerLink]="['/event', event?.id, 'view']">{{ event.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="treinamentoApp.person.coffee">Coffee</span></dt>
+        <dd>
+          <span *ngFor="let coffee of person.coffees; let last = last">
+            <a [routerLink]="['/coffee', coffee?.id, 'view']">{{ coffee.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/person', person.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

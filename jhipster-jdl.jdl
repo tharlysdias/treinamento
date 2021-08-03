@@ -1,0 +1,77 @@
+
+application {
+  config {
+    baseName treinamento,
+    applicationType monolith,
+    packageName com.proway.treinamento,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    clientFramework angular
+  }
+  entities *
+}
+
+/**
+ * The Person entity.
+ * @author Tharlys Dias.
+ */
+entity Person {
+	/**
+	* The ID attribute.
+	*/
+	id UUID
+	/**
+	* The firstname attribute.
+	*/
+	firstName String required minlength(3) pattern(/^[A-Z][a-z]+\d$/),
+    /**
+	* The lastname attribute.
+	*/
+	lastName String
+}
+
+/**
+ * The Event entity.
+ * @author Tharlys Dias.
+ */
+entity Event {
+	/**
+	* The ID attribute.
+	*/
+	id UUID
+	/**
+	* The firstname attribute.
+	*/
+	name String required,
+    /**
+	* The lastname attribute.
+	*/
+	capacity Integer required
+}
+
+/**
+ * The Coffee entity.
+ * @author Tharlys Dias.
+ */
+entity Coffee {
+	/**
+	* The ID attribute.
+	*/
+	id UUID
+	/**
+	* The firstname attribute.
+	*/
+	name String required,
+    /**
+	* The lastname attribute.
+	*/
+	capacity Integer required
+}
+
+relationship ManyToMany {
+	Person to Event,
+	Person to Coffee
+}
+
+paginate Person, Event, Coffee with infinite-scroll
+    
